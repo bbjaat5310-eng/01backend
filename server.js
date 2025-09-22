@@ -13,7 +13,6 @@ const __dirname = path.dirname(__filename);
 
 // Initialize the Express application
 const app = express();
-const PORT = 3000;
 
 // Multer configuration for file uploads
 const upload = multer({ dest: 'uploads/' });
@@ -30,6 +29,6 @@ app.use(cors());
 app.use('/', createLeadRoutes(inMemoryStore, upload));
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running`);
 });
