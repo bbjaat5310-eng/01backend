@@ -12,8 +12,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize the Express application
+
 const app = express();
 
+app.get("/" , (req , res) =>{
+  res.send("Server is Listening")
+});
 // Multer configuration for file uploads
 const upload = multer({ dest: 'uploads/' });
 const uploadDir = path.join(__dirname, 'uploads');
