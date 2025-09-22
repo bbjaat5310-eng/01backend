@@ -12,7 +12,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize the Express application
-
 const app = express();
 
 app.get("/" , (req , res) =>{
@@ -28,7 +27,12 @@ if (!fs.existsSync(uploadDir)) {
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+// CORS configuration to allow all origins
+app.use(cors({
+  origin: '*', // Allows all origins
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Use the routes from the dedicated router file, passing the data store
 app.use('/', createLeadRoutes(inMemoryStore, upload));
