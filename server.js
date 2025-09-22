@@ -18,6 +18,7 @@ const app = express();
 app.get("/" , (req , res) =>{
   res.send("Server is Listening")
 });
+
 // Multer configuration for file uploads
 const upload = multer({ dest: 'uploads/' });
 const uploadDir = path.join(__dirname, 'uploads');
