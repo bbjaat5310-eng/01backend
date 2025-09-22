@@ -29,6 +29,6 @@ app.use(cors());
 app.use('/', createLeadRoutes(inMemoryStore, upload));
 
 // Start the server
-app.listen(process.env.PORT || 3000, () => {
+app.listen( () => {
   console.log(`Server is running`);
 });
