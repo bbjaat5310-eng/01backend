@@ -27,12 +27,11 @@ if (!fs.existsSync(uploadDir)) {
 
 // Middleware
 app.use(express.json());
-// CORS configuration to allow all origins
-app.use(cors({
-  origin: '*', // Allows all origins
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // Use the routes from the dedicated router file, passing the data store
 app.use('/', createLeadRoutes(inMemoryStore, upload));
