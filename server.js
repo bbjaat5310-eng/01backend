@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import cors from "cors";
 import "dotenv/config";
 import multer from 'multer';
 import fs from 'fs';
@@ -17,6 +16,7 @@ const app = express();
 
 app.get("/" , (req , res) =>{
   res.send("Server is Listening")
+
 });
 
 // Multer configuration for file uploads
@@ -29,9 +29,9 @@ if (!fs.existsSync(uploadDir)) {
 // Middleware
 app.use(express.json());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
 
